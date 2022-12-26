@@ -27,6 +27,12 @@ files_list = os.listdir(input_folder)
 files_count = 0
 for file in files_list:
     input_filepath = os.path.join(input_folder, file)
+    
+    if not os.path.isfile(input_filepath):
+        # skip any folders
+        print("Skip folder", file)
+        continue
+
     file_extension = pathlib.Path(input_filepath).suffix
 
     # Get modification time
